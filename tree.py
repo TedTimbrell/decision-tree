@@ -3,17 +3,20 @@ from mldata import parse_c45
 class DecisionTree(Object):
 
 	def DecisionTree(self):
+		self.continuous_splits = {}
 		pass
 
-	def create_presorted_splits(dataset, feat_index):
-		attr_class_pairs = sorted([ex[feat_index] for ex in dataset])
-		for ex in 
+	def set_presorted_splits(dataset, feat_index):
+		attrs_list = sorted([ex[feat_index] for ex in dataset])
+		self.continuous_splits[feat_index] = []
+		for i in range(len(attrs_list) - 1):
+			self.continuous_splits[feat_index].append((attrs_list[i+1] - attrs_list[i])/2.0)
 
 	def build(self, dataset):
-		self.continuous_splits = {}
 		for index, feature in enumerate(dataset.schema):
 			if feature.type == 'CONTINUOUS':
-
+				self.set_presorted_splits(dataset, index)
+		
 
 
 	@staticmethod
