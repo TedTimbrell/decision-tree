@@ -1,0 +1,2 @@
+# Decision Tree
+This project is is a simple revamped decision tree that handles c4.5 data with both continuous, nominal, and binary data. Primarily it's going to be used as a research tool for different split criterion, particularly relating to likelihood.

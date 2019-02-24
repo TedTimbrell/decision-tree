@@ -6,7 +6,7 @@ class DecisionTree(Object):
 		self.continuous_splits = {}
 		self.features = []
 
-	def set_presorted_splits(self, attrs_list, feat_index):
+	def set_presorted_feature_splits(self, attrs_list, feat_index):
 		self.continuous_splits[feat_index] = []
 		for i in range(len(attrs_list) - 1):
 			self.continuous_splits[feat_index].append((attrs_list[i+1] - attrs_list[i])/2.0)
@@ -16,7 +16,7 @@ class DecisionTree(Object):
 		for index, feature in enumerate(self.features):
 			if feature.type == 'CONTINUOUS':
 				attrs_list = sorted([ex[feat_index] for ex in dataset])
-				self.set_presorted_splits(attrs_list, index)
+				self.set_presorted_feature_splits(attrs_list, index)
 
 	@staticmethod
 	def _check_purity(self, dataset, index):
@@ -47,12 +47,24 @@ class DecisionTree(Object):
 
 		return max_val
 
-	def _id3(self, dataset, class_index, remaining_feature_indecies):
+	def _id3(self, dataset, class_index, remaining_feature_indices, split_criterion_func):
 		if self._check_purity(dataset, class_index):
 			return Node.pure_node(dataset[0][class_index])
 		elif not remaining_features:
 			return Node.pure_node(self._get_majority_class(dataset, class_index))
 		# Else continue to finding the best split
+
+		best_split_index = 0
+		best_gain = 0
+		best_split_sets = []
+		for feature_index in remaining_feature_indices:
+			if self.features[feature_index].type == 'CONTINUOUS'
+				pass
+			elif self.features[feature_index].type == 'NOMINAL'
+				pass
+			elif self.features[feature_index].type == 'BINARY'
+				pass
+
 
 
 
